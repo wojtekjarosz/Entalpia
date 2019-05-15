@@ -21,45 +21,25 @@ public class Controller {
     @FXML
     private TableView<ProcessModel> processModelTable;
     @FXML
-    private TableColumn<ProcessModel, String> tpColumn;
+    private TableColumn<ProcessModel, Integer> tpColumn;
     @FXML
-    private TableColumn<ProcessModel, String> tkColumn;
+    private TableColumn<ProcessModel, Integer> tkColumn;
     @FXML
-    private TableColumn<ProcessModel, String> ecColumn;
+    private TableColumn<ProcessModel, Double> ecColumn;
 
     @FXML
-    private TableColumn<ProcessModel, String> typeColumn;
+    private TableColumn<ProcessModel, ProcessType> typeColumn;
 
     Stage dialogStage;
 
     @FXML
     ScatterChart scatterChart;
-
     @FXML
     CategoryAxis xAxis;
-
     @FXML
     NumberAxis yAxis;
-
-    @FXML
-    ComboBox comboBox;
-
     @FXML
     TextArea textArea;
-
-    @FXML
-    TextField Tsol;
-
-    @FXML
-    TextField Tliq;
-
-    @FXML
-    TextField Ec;
-
-    XYChart.Series series;
-
-    @FXML
-    Button loadButton;
 
     // Reference to the main application.
     private Main main;
@@ -80,13 +60,13 @@ public class Controller {
     public void initialize(){
 
         tpColumn.setCellValueFactory(
-                cellData -> cellData.getValue().tpProperty());
+                cellData -> cellData.getValue().tpProperty().asObject());
         tkColumn.setCellValueFactory(
-                cellData -> cellData.getValue().tkProperty());
+                cellData -> cellData.getValue().tkProperty().asObject());
         ecColumn.setCellValueFactory(
-                cellData -> cellData.getValue().ecProperty());
+                cellData -> cellData.getValue().ecProperty().asObject());
         typeColumn.setCellValueFactory(
-                cellData -> cellData.getValue().typeProperty());
+                cellData -> cellData.getValue().processTypeProperty());
 
         // Clear book details.
         showProcessDetails(null);
@@ -348,13 +328,32 @@ public class Controller {
     }
 
     public double isProcess(int temperature){
-
-        for(int i=0; i<processesQuantity; i++){
+        //przemiany z pliku
+        /*for(int i=0; i<processesQuantity; i++){
             if((temperature > processesTp[i]) && (temperature < processesTk[i])){
                 //sposób 1 - efekt cieplny nałożony równomienie
                 return processesEk[i]/(processesTk[i] - processesTp[i]);
             }
         }
+        return -1;*/
+
+
+        for(int i=0; i<main.getProcessData().size(); i++){
+            if((temperature > main.getProcessData().get(i).getTp() && (temperature < main.getProcessData().get(i).getTk()))){
+                //sposób 1 - efekt cieplny nałożony równomienie
+                ProcessType pT = main.getProcessData().get(i).getProcessType();
+                switch(pT){
+                    case NONE:
+                        return -1;
+                    case EVEN:
+                        return main.getProcessData().get(i).getEc()/(main.getProcessData().get(i).getTk() - main.getProcessData().get(i).getTp());
+                }
+
+            }
+        }
+
         return -1;
     }
+
+
 }

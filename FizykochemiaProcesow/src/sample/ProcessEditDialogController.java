@@ -60,9 +60,9 @@ public class ProcessEditDialogController {
     public void setProcessModel(ProcessModel process) {
         this.process = process;
 
-        tpField.setText(process.getTp());
-        tkField.setText(process.getTk());
-        ecField.setText(process.getEc());
+        tpField.setText(String.valueOf(process.getTp()));
+        tkField.setText(String.valueOf(process.getTk()));
+        ecField.setText(String.valueOf(process.getEc()));
         comboBox.setValue(process.getProcessType());
     }
 
@@ -81,9 +81,9 @@ public class ProcessEditDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            process.setTp(tpField.getText());
-            process.setTk(tkField.getText());
-            process.setEc(ecField.getText());
+            process.setTp(Integer.parseInt(tpField.getText()));
+            process.setTk(Integer.parseInt(tkField.getText()));
+            process.setEc(Double.parseDouble(ecField.getText()));
             process.setProcessType(comboBox.getValue());
 
             okClicked = true;
@@ -137,7 +137,7 @@ public class ProcessEditDialogController {
         } else {
             // try to parse the postal code into an int.
             try {
-                Integer.parseInt(ecField.getText());
+                Double.parseDouble(ecField.getText());
             } catch (NumberFormatException e) {
                 errorMessage += "No valid ec (must be an double)!\n";
             }

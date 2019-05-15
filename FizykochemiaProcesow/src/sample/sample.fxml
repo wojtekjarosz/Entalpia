@@ -21,15 +21,11 @@
                 <NumberAxis fx:id="yAxis" side="LEFT" />
               </yAxis>
             </ScatterChart>
-            <AnchorPane prefHeight="783.0" prefWidth="391.0">
+            <AnchorPane maxWidth="360.0" minWidth="360.0" prefHeight="783.0" prefWidth="360.0">
                <children>
-                  <Button layoutX="15.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleLoadButton" prefHeight="31.0" prefWidth="187.0" text="Wczytaj dane" />
-                  <Button layoutX="15.0" layoutY="135.0" mnemonicParsing="false" onAction="#handle2Button" prefHeight="21.0" prefWidth="187.0" text="Wczytaj przemiany" />
-                  <TextArea fx:id="textArea" editable="false" layoutX="17.0" layoutY="99.0" prefHeight="21.0" prefWidth="181.0" />
-                  <Button layoutX="15.0" layoutY="59.0" mnemonicParsing="false" onAction="#enthalpyButton" prefHeight="31.0" prefWidth="187.0" text="Policz entalpię" />
-                  <ChoiceBox layoutX="15.0" layoutY="672.0" prefHeight="31.0" prefWidth="187.0" />
-                  <Label layoutX="14.0" layoutY="630.0" text="Wybierz metodę:" />
-                  <Button layoutX="14.0" layoutY="715.0" mnemonicParsing="false" onAction="#enthalpyButton2" prefHeight="38.0" prefWidth="187.0" text="Uwzględnij przemiany" />
+                  <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleLoadButton" prefHeight="38.0" prefWidth="331.0" text="Wczytaj dane" />
+                  <Button layoutX="15.0" layoutY="59.0" mnemonicParsing="false" onAction="#enthalpyButton" prefHeight="38.0" prefWidth="331.0" text="Policz entalpię bez przemian" />
+                  <Button layoutX="17.0" layoutY="442.0" mnemonicParsing="false" onAction="#enthalpyButton2" prefHeight="38.0" prefWidth="331.0" text="Policz entalpię z przemianami" />
                   <TableView fx:id="processModelTable" layoutX="14.0" layoutY="182.0" prefHeight="197.0" prefWidth="331.0">
                     <columns>
                       <TableColumn fx:id="tpColumn" prefWidth="70.0" text="Tp" />

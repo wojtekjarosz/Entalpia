@@ -1,67 +1,78 @@
 package sample;
 
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 /**
  * Created by Wojtek on 20.03.2017.
  */
 public class ProcessModel {
 
-    private final StringProperty tp;
-    private final StringProperty tk;
-    private final StringProperty ec;
-    private ProcessType processType;
+    private final IntegerProperty tp;
+    private final IntegerProperty tk;
+    private final DoubleProperty ec;
+    private final ObjectProperty<ProcessType> processType;
 
     public ProcessModel() {
-        this(null, null, null);
+            this(0,0,0, ProcessType.NONE);
     }
 
-    public ProcessModel(String tp, String tk, String ec) {
-        this.tp = new SimpleStringProperty(tp);
-        this.tk = new SimpleStringProperty(tk);
-        this.ec = new SimpleStringProperty(ec);
-        this.processType = ProcessType.EVEN;
+
+    public ProcessModel(int tp, int tk, double ec, ProcessType processType) {
+        this.tp = new SimpleIntegerProperty(tp);
+        this.tk = new SimpleIntegerProperty(tk);
+        this.ec = new SimpleDoubleProperty(ec);
+        this.processType = new SimpleObjectProperty<ProcessType>(processType) ;
     }
 
-    public String getTp() {
+    public int getTp() {
         return tp.get();
     }
 
-    public StringProperty tpProperty() {
+    public IntegerProperty tpProperty() {
         return tp;
     }
 
-    public void setTp(String tp) {
+    public void setTp(int tp) {
         this.tp.set(tp);
     }
 
-    public String getTk() {
+    public int getTk() {
         return tk.get();
     }
 
-    public StringProperty tkProperty() {
+    public IntegerProperty tkProperty() {
         return tk;
     }
 
-    public void setTk(String tk) {
+    public void setTk(int tk) {
         this.tk.set(tk);
     }
 
-    public String getEc() {
+    public ProcessType getProcessType() {
+        return processType.get();
+    }
+
+    public ObjectProperty processTypeProperty() {
+        return processType;
+    }
+
+    public void setProcessType(ProcessType processType) {
+        this.processType.set(processType);
+    }
+
+    public double getEc() {
         return ec.get();
     }
 
-    public StringProperty ecProperty() {
+    public DoubleProperty ecProperty() {
         return ec;
     }
 
-    public void setEc(String ec) {
+    public void setEc(double ec) {
         this.ec.set(ec);
     }
-
-    public ProcessType getProcessType() {
+    /*public ProcessType getProcessType() {
 
         return processType;
     }
@@ -79,7 +90,7 @@ public class ProcessModel {
 
     public void setProcessType(ProcessType pro){
         this.processType = pro;
-    }
+    }*/
 
 
 }
