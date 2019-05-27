@@ -9,9 +9,16 @@ public enum ProcessType {
             return "Równomierna";
         }
     },
+
+    EVERY_SECOND_HAS_MORE {
+        @Override public String toString() {
+            return "Co drugi";
+        }
+    },
     NONE {
         @Override public String toString() {
             return "-";
         }
     },
+
 }

@@ -110,36 +110,36 @@ public class ProcessEditDialogController {
         String errorMessage = "";
 
 
-        if (tpField.getText() == null || tpField.getText().length() == 0) {
-            errorMessage += "No valid tp!\n";
+        if (tpField.getText() == null || tpField.getText().length() == 0 ) {
+            errorMessage += "No valid Tp!\n";
         } else {
             // try to parse the postal code into an int.
             try {
                 Integer.parseInt(tpField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "No valid tp (must be an integer)!\n";
+                errorMessage += "No valid Tp (must be an integer)!\n";
             }
         }
 
         if (tkField.getText() == null || tkField.getText().length() == 0) {
-            errorMessage += "No valid tk!\n";
+            errorMessage += "No valid Tk!\n";
         } else {
             // try to parse the postal code into an int.
             try {
                 Integer.parseInt(tkField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "No valid tk (must be an integer)!\n";
+                errorMessage += "No valid Tk (must be an integer)!\n";
             }
         }
 
         if (ecField.getText() == null || ecField.getText().length() == 0) {
-            errorMessage += "No valid ec!\n";
+            errorMessage += "No valid Ec!\n";
         } else {
             // try to parse the postal code into an int.
             try {
                 Double.parseDouble(ecField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "No valid ec (must be an double)!\n";
+                errorMessage += "No valid Ec (must be an double)!\n";
             }
         }
 

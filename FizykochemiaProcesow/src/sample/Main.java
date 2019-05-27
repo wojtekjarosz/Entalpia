@@ -21,9 +21,10 @@ public class Main extends Application {
 
 
     public Main() {
-        choiceBox.addAll(ProcessType.EVEN, ProcessType.NONE);
+        choiceBox.addAll(ProcessType.EVEN, ProcessType.EVERY_SECOND_HAS_MORE, ProcessType.NONE);
 
     }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
@@ -96,8 +97,10 @@ public class Main extends Application {
     public ObservableList<ProcessType> getTypeData() {
         return choiceBox;
     }
+
     /**
      * Returns the main stage.
+     *
      * @return
      */
     public Stage getPrimaryStage() {
