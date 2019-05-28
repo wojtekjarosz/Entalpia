@@ -2,17 +2,23 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.ScatterChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
+import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
@@ -33,7 +39,7 @@ public class Controller {
     Stage dialogStage;
 
     @FXML
-    ScatterChart scatterChart;
+    LineChart scatterChart;
     @FXML
     CategoryAxis xAxis;
     @FXML
@@ -55,7 +61,8 @@ public class Controller {
     int[] processesTp;
     int[] processesTk;
     double[] processesEk;
-
+    List<double[]> enthapls = new ArrayList<>();
+    List<ProcessModel[]> currentProcesses = new ArrayList<>();
     @FXML
     public void initialize() {
 
@@ -249,7 +256,7 @@ public class Controller {
         int size = T.length;
         deltaH = new double[size];
         deltaH[0] = 0;
-        answer.remove(aSeries);
+        //answer.remove(aSeries);
         yAxis.setLabel("Ec");
         aSeries = new XYChart.Series<String, Double>();
 
@@ -267,6 +274,10 @@ public class Controller {
             System.out.println("temp: " + T[i] + ", delta: " + deltaH[i]);
 //            System.out.println(T[i]);
         }
+
+        enthapls.add(deltaH);
+        ProcessModel[] processes = main.getProcessData().toArray(new ProcessModel[0]);
+        currentProcesses.add(processes);
 
         answer.addAll(aSeries);
 
@@ -331,6 +342,69 @@ public class Controller {
         }
     }
 
+    @FXML
+    public void handleClearChart(){
+        answer.clear();
+        scatterChart.setData(answer);
+        enthapls.clear();
+    }
+
+    @FXML
+    public void handleSaveChart(){
+
+        WritableImage image = scatterChart.snapshot(new SnapshotParameters(), null);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Image");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        File file = fileChooser.showSaveDialog(dialogStage);
+        if (file != null) {
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(image,
+                        null), "png", file);
+
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+
+    @FXML
+    public void  handleSaveEnthalpy(){
+
+
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Zapisz obliczenia");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("TXT", "*.txt")
+        );
+        File file = fileChooser.showSaveDialog(dialogStage);
+        if (file != null) {
+            try {
+                PrintWriter writer;
+                writer = new PrintWriter(file);
+                for(int i = 0; i<enthapls.size();i++) {
+                    ProcessModel[] pmArray = currentProcesses.get(i);
+                    for (int j = 0; j < pmArray.length; j++) {
+                        String pm = "Przemiana " + j + ": Tp:" + pmArray[j].getTp() + ", Tk:" + pmArray[j].getTk() + ", Ec:" + pmArray[j].getEc();
+                        writer.println(pm);
+                    }
+                    for (int j = 0; j < enthapls.get(i).length; j++){
+                         writer.println(T[j] + " " + enthapls.get(i)[j]);
+                    }
+                    writer.println();
+                }
+                writer.close();
+
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+
+
+    }
 
     public double interpolate(double x1, double y1, double x2, double y2, double x) {
         return (x - x1) * (y2 - y1) / (x2 - x1) + y1;
@@ -389,6 +463,7 @@ public class Controller {
 
         return -1;
     }
+
 
 
 }
