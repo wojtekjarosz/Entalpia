@@ -51,6 +51,7 @@ public class Controller {
     private Main main;
 
     XYChart.Series<String, Double> aSeries;
+    XYChart.Series<String, Double> bSeries;
 
     ObservableList<XYChart.Series<String, Double>> answer;
 
@@ -187,8 +188,10 @@ public class Controller {
         double average = 0;
         try {
             int size = T.length;
-            answer.remove(aSeries);
-            aSeries = new XYChart.Series<String, Double>();
+            if(aSeries != null){
+                answer.remove(aSeries);
+            }
+            bSeries = new XYChart.Series<String, Double>();
             yAxis.setLabel("Entalpia [J]");
             deltaH = new double[size];
             deltaH[0] = 0;
@@ -203,11 +206,11 @@ public class Controller {
             }
 
             for (int i = 0; i < size; i++) {
-                aSeries.getData().add(new XYChart.Data(String.valueOf(T[i]), deltaH[i]));
+                bSeries.getData().add(new XYChart.Data(String.valueOf(T[i]), deltaH[i]));
             }
 
 
-            answer.addAll(aSeries);
+            answer.addAll(bSeries);
 
             scatterChart.setData(answer);
         } catch (Exception e) {
@@ -278,7 +281,10 @@ public class Controller {
             deltaH[0] = 0;
             //answer.remove(aSeries);
             yAxis.setLabel("Entalpia [J]");
-            aSeries = new XYChart.Series<String, Double>();
+            if(aSeries != null){
+                answer.remove(aSeries);
+            }
+            bSeries = new XYChart.Series<String, Double>();
 
             for (int i = 1; i < (size); i++) {
                 average = (Cp[i] + Cp[i - 1]) / 2;
@@ -288,18 +294,18 @@ public class Controller {
                 } else {
                     deltaH[i] = deltaH[i - 1] + average * (T[i] - T[i - 1]) + ek;
                 }
-                aSeries.getData().add(new XYChart.Data(String.valueOf(T[i]), deltaH[i]));
+                bSeries.getData().add(new XYChart.Data(String.valueOf(T[i]), deltaH[i]));
             }
-            for (int i = 0; i < size; i++) {
-                System.out.println("temp: " + T[i] + ", delta: " + deltaH[i]);
+//            for (int i = 0; i < size; i++) {
+//                System.out.println("temp: " + T[i] + ", delta: " + deltaH[i]);
 //            System.out.println(T[i]);
-            }
+//            }
 
             enthapls.add(deltaH);
             ProcessModel[] processes = main.getProcessData().toArray(new ProcessModel[0]);
             currentProcesses.add(processes);
 
-            answer.addAll(aSeries);
+            answer.addAll(bSeries);
 
             scatterChart.setData(answer);
         } catch (Exception e) {

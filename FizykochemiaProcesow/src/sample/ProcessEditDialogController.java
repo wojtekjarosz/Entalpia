@@ -151,7 +151,7 @@ public class ProcessEditDialogController {
             Alert alert = new Alert(AlertType.ERROR);
             alert.initOwner(dialogStage);
             alert.setTitle("Niewłaściwe dane");
-            alert.setHeaderText("Proszę poprawić niewłaściwe dane");
+            alert.setHeaderText("Proszę poprawić niewłaściwe dane.");
             alert.setContentText(errorMessage);
 
             alert.showAndWait();
