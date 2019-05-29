@@ -63,6 +63,7 @@ public class Controller {
     double[] processesEk;
     List<double[]> enthapls = new ArrayList<>();
     List<ProcessModel[]> currentProcesses = new ArrayList<>();
+
     @FXML
     public void initialize() {
 
@@ -118,7 +119,7 @@ public class Controller {
         int[] T_temp = new int[93];
         double[] Cp_temp = new double[93];
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open file");
+        fileChooser.setTitle("Wczytaj plik");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
@@ -126,8 +127,8 @@ public class Controller {
         answer = FXCollections.observableArrayList();
         aSeries = new XYChart.Series<String, Double>();
 
-        xAxis.setLabel("T");
-        yAxis.setLabel("Cp");
+        xAxis.setLabel("Temperatura [K]");
+        yAxis.setLabel("Ciepło właściwe [J/kg*K]");
 
         try {
             File file = fileChooser.showOpenDialog(dialogStage);
@@ -176,36 +177,46 @@ public class Controller {
     @FXML
     public void enthalpyButton() {
         double average = 0;
-        int size = T.length;
-        answer.remove(aSeries);
-        aSeries = new XYChart.Series<String, Double>();
-        yAxis.setLabel("Ec");
-        deltaH = new double[size];
-        deltaH[0] = 0;
-        for (int i = 1; i < size; i++) {
-            average = (Cp[i] + Cp[i - 1]) / 2;
-            deltaH[i] = deltaH[i - 1] + average * (T[i] - T[i - 1]);
-        }
+        try {
+            int size = T.length;
+            answer.remove(aSeries);
+            aSeries = new XYChart.Series<String, Double>();
+            yAxis.setLabel("Entalpia [J]");
+            deltaH = new double[size];
+            deltaH[0] = 0;
+            for (int i = 1; i < size; i++) {
+                average = (Cp[i] + Cp[i - 1]) / 2;
+                deltaH[i] = deltaH[i - 1] + average * (T[i] - T[i - 1]);
+            }
 
-        for (int i = 0; i < size; i++) {
+            for (int i = 0; i < size; i++) {
 //            System.out.println(deltaH[i]);
 //            System.out.println(T[i]);
+            }
+
+            for (int i = 0; i < size; i++) {
+                aSeries.getData().add(new XYChart.Data(String.valueOf(T[i]), deltaH[i]));
+            }
+
+
+            answer.addAll(aSeries);
+
+            scatterChart.setData(answer);
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(main.getPrimaryStage());
+            alert.setTitle("Brak danych");
+            alert.setHeaderText("Brak danych");
+            alert.setContentText("Proszę wczytać dane.");
+
+            alert.showAndWait();
         }
-
-        for (int i = 0; i < size; i++) {
-            aSeries.getData().add(new XYChart.Data(String.valueOf(T[i]), deltaH[i]));
-        }
-
-
-        answer.addAll(aSeries);
-
-        scatterChart.setData(answer);
     }
 
     @FXML
     public void handle2Button() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open file");
+        fileChooser.setTitle("Wczytaj plik");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("TXT", "*.txt")
         );
@@ -253,35 +264,45 @@ public class Controller {
     @FXML
     public void enthalpyButton2() {
         double average = 0;
-        int size = T.length;
-        deltaH = new double[size];
-        deltaH[0] = 0;
-        //answer.remove(aSeries);
-        yAxis.setLabel("Ec");
-        aSeries = new XYChart.Series<String, Double>();
+        try {
+            int size = T.length;
+            deltaH = new double[size];
+            deltaH[0] = 0;
+            //answer.remove(aSeries);
+            yAxis.setLabel("Entalpia [J]");
+            aSeries = new XYChart.Series<String, Double>();
 
-        for (int i = 1; i < (size); i++) {
-            average = (Cp[i] + Cp[i - 1]) / 2;
-            double ek = isProcess(T[i]);
-            if (ek == -1) {
-                deltaH[i] = deltaH[i - 1] + average * (T[i] - T[i - 1]);
-            } else {
-                deltaH[i] = deltaH[i - 1] + average * (T[i] - T[i - 1]) + ek;
+            for (int i = 1; i < (size); i++) {
+                average = (Cp[i] + Cp[i - 1]) / 2;
+                double ek = isProcess(T[i]);
+                if (ek == -1) {
+                    deltaH[i] = deltaH[i - 1] + average * (T[i] - T[i - 1]);
+                } else {
+                    deltaH[i] = deltaH[i - 1] + average * (T[i] - T[i - 1]) + ek;
+                }
+                aSeries.getData().add(new XYChart.Data(String.valueOf(T[i]), deltaH[i]));
             }
-            aSeries.getData().add(new XYChart.Data(String.valueOf(T[i]), deltaH[i]));
-        }
-        for (int i = 0; i < size; i++) {
-            System.out.println("temp: " + T[i] + ", delta: " + deltaH[i]);
+            for (int i = 0; i < size; i++) {
+                System.out.println("temp: " + T[i] + ", delta: " + deltaH[i]);
 //            System.out.println(T[i]);
+            }
+
+            enthapls.add(deltaH);
+            ProcessModel[] processes = main.getProcessData().toArray(new ProcessModel[0]);
+            currentProcesses.add(processes);
+
+            answer.addAll(aSeries);
+
+            scatterChart.setData(answer);
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(main.getPrimaryStage());
+            alert.setTitle("Brak danych");
+            alert.setHeaderText("Brak danych");
+            alert.setContentText("Proszę wczytać dane.");
+
+            alert.showAndWait();
         }
-
-        enthapls.add(deltaH);
-        ProcessModel[] processes = main.getProcessData().toArray(new ProcessModel[0]);
-        currentProcesses.add(processes);
-
-        answer.addAll(aSeries);
-
-        scatterChart.setData(answer);
     }
 
     /**
@@ -309,9 +330,9 @@ public class Controller {
             // Nothing selected.
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(main.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No process Selected");
-            alert.setContentText("Please select a process in the table.");
+            alert.setTitle("Brak wyboru przemiany");
+            alert.setHeaderText("Brak wyboru przemiany");
+            alert.setContentText("Proszę wybrać przemianę z tabeli.");
 
             alert.showAndWait();
         }
@@ -334,27 +355,27 @@ public class Controller {
             // Nothing selected.
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(main.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Selection");
-            alert.setContentText("Please select the transformation from the table.");
+            alert.setTitle("Brak wyboru przemiany");
+            alert.setHeaderText("Brak wyboru przemiany");
+            alert.setContentText("Proszę wybrać przemianę z tabeli.");
 
             alert.showAndWait();
         }
     }
 
     @FXML
-    public void handleClearChart(){
+    public void handleClearChart() {
         answer.clear();
         scatterChart.setData(answer);
         enthapls.clear();
     }
 
     @FXML
-    public void handleSaveChart(){
+    public void handleSaveChart() {
 
         WritableImage image = scatterChart.snapshot(new SnapshotParameters(), null);
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Image");
+        fileChooser.setTitle("Zapisz zdjęcie");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG", "*.png")
         );
@@ -371,8 +392,7 @@ public class Controller {
     }
 
     @FXML
-    public void  handleSaveEnthalpy(){
-
+    public void handleSaveEnthalpy() {
 
 
         FileChooser fileChooser = new FileChooser();
@@ -385,14 +405,15 @@ public class Controller {
             try {
                 PrintWriter writer;
                 writer = new PrintWriter(file);
-                for(int i = 0; i<enthapls.size();i++) {
+                for (int i = 0; i < enthapls.size(); i++) {
                     ProcessModel[] pmArray = currentProcesses.get(i);
                     for (int j = 0; j < pmArray.length; j++) {
-                        String pm = "Przemiana " + j + ": Tp:" + pmArray[j].getTp() + ", Tk:" + pmArray[j].getTk() + ", Ec:" + pmArray[j].getEc();
+                        String pm = "Przemiana " + j + ": Tp:" + pmArray[j].getTp() + ", Tk:" + pmArray[j].getTk() + ", Ec:" + pmArray[j].getEc() +
+                                ", Typ: " + pmArray[j].getProcessType().toString();
                         writer.println(pm);
                     }
-                    for (int j = 0; j < enthapls.get(i).length; j++){
-                         writer.println(T[j] + " " + enthapls.get(i)[j]);
+                    for (int j = 0; j < enthapls.get(i).length; j++) {
+                        writer.println(T[j] + " " + enthapls.get(i)[j]);
                     }
                     writer.println();
                 }
@@ -460,20 +481,36 @@ public class Controller {
                             }
                         }
                     case PARABOLA:
-                        double stride = 4.0/(deltaT + 1.0);
+                        double stride = 4.0 / (deltaT + 1.0);
                         double sum = 0.0;
                         int counter = 0;
-                        for(double k = -2; k <= 2; k+=stride){
+                        for (double k = -2; k <= 2; k += stride) {
                             sum += parabola(k);
                             counter++;
                         }
                         double[] values = new double[counter];
                         counter = 0;
-                        for(double k = -2; k <= 2; k+=stride){
+                        for (double k = -2; k <= 2; k += stride) {
                             values[counter++] = parabola(k);
                         }
                         int index = (int) (temperature - tempP);
-                        return (values[index]/sum)*L;
+                        return (values[index] / sum) * L;
+                    case SINUS:
+                        stride = Math.PI / (deltaT + 1.0);
+                        sum = 0.0;
+                        counter = 0;
+                        for (double k = -Math.PI / 2; k <= Math.PI / 2; k += stride) {
+                            sum += sinus(k);
+                            counter++;
+                        }
+                        values = new double[counter];
+                        counter = 0;
+                        for (double k = -Math.PI / 2; k <= Math.PI / 2; k += stride) {
+                            values[counter++] = sinus(k);
+                        }
+                        index = (int) (temperature - tempP);
+                        return (values[index] / sum) * L;
+
                 }
 
             }
@@ -482,10 +519,13 @@ public class Controller {
         return -1;
     }
 
-    public double parabola(double x){
-        return - (x*x) + 4;
+    public double parabola(double x) {
+        return -(x * x) + 4;
     }
 
+    public double sinus(double x) {
+        return Math.sin(x) + 2;
+    }
 
 
 }

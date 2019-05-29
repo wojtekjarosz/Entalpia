@@ -111,35 +111,35 @@ public class ProcessEditDialogController {
 
 
         if (tpField.getText() == null || tpField.getText().length() == 0 ) {
-            errorMessage += "No valid Tp!\n";
+            errorMessage += "Niewłaściwa wartość temperatury początkowej!\n";
         } else {
             // try to parse the postal code into an int.
             try {
                 Integer.parseInt(tpField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "No valid Tp (must be an integer)!\n";
+                errorMessage += "Niewłaściwa wartość temperatury początkowej - temperatura musi być liczbą całkowitą!\n";
             }
         }
 
         if (tkField.getText() == null || tkField.getText().length() == 0) {
-            errorMessage += "No valid Tk!\n";
+            errorMessage += "Niewłaściwa wartość temperatury końcowej!\n";
         } else {
             // try to parse the postal code into an int.
             try {
                 Integer.parseInt(tkField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "No valid Tk (must be an integer)!\n";
+                errorMessage += "Niewłaściwa wartość temperatury końcowej - temperatura musi być liczbą całkowitą!\n";
             }
         }
 
         if (ecField.getText() == null || ecField.getText().length() == 0) {
-            errorMessage += "No valid Ec!\n";
+            errorMessage += "Niewłaściwa wartość efektu cieplnego!\n";
         } else {
             // try to parse the postal code into an int.
             try {
                 Double.parseDouble(ecField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "No valid Ec (must be an double)!\n";
+                errorMessage += "Niewłaściwa wartość efektu cieplnego - temperatura musi być liczbą!\n";
             }
         }
 
@@ -150,8 +150,8 @@ public class ProcessEditDialogController {
             // Show the error message.
             Alert alert = new Alert(AlertType.ERROR);
             alert.initOwner(dialogStage);
-            alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
+            alert.setTitle("Niewłaściwe dane");
+            alert.setHeaderText("Proszę poprawić niewłaściwe dane");
             alert.setContentText(errorMessage);
 
             alert.showAndWait();
