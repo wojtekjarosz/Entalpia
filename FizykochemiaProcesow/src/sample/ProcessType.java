@@ -20,5 +20,8 @@ public enum ProcessType {
             return "-";
         }
     },
+    PARABOLA{
+         @Override public  String toString() { return "Parabola";}
+    }
 
 }

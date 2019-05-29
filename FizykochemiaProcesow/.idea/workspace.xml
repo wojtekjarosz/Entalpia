@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Save chart, save enthalpy data after processes, clear chart" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Save chart, save enthalpy data after processes, clear chart">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ProcessType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ProcessType.java" afterDir="false" />
+    </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -63,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-934">
+            <state relative-caret-position="-811">
               <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -72,16 +77,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="386" column="47" lean-forward="true" selection-start-line="386" selection-start-column="47" selection-end-line="386" selection-end-column="47" />
+            <state relative-caret-position="196">
+              <caret line="469" column="62" lean-forward="true" selection-start-line="469" selection-start-column="62" selection-end-line="469" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2936#2937#0" expanded="true" />
-                <element signature="e#2982#2983#0" expanded="true" />
                 <element signature="method#handleEditProcess#0;class#Controller#0" />
+                <element signature="e#15948#15949#0" expanded="true" />
+                <element signature="e#15982#15983#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/ProcessType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="391">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#141#142#0" expanded="true" />
                 <element signature="e#185#186#0" expanded="true" />
@@ -122,7 +127,7 @@
           <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -180,30 +185,28 @@
         <option value="$PROJECT_DIR$/src/sample/Product.java" />
         <option value="$PROJECT_DIR$/src/module-info.java" />
         <option value="$PROJECT_DIR$/src/sample/ProductType.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/ProcessModel.java" />
         <option value="$PROJECT_DIR$/src/sample/ProcessEditDialogController.java" />
-        <option value="$PROJECT_DIR$/src/sample/ProcessType.java" />
         <option value="$PROJECT_DIR$/src/sample/PngEncoderFx.java" />
+        <option value="$PROJECT_DIR$/src/sample/ProcessType.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="455" />
     <option name="width" value="1475" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
-  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -227,7 +230,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -246,7 +248,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../PRACA INZYNIERSKA/Java_projects/LightBoard" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -363,7 +365,8 @@
       <workItem from="1557926200308" duration="4410000" />
       <workItem from="1557935981579" duration="6474000" />
       <workItem from="1558524301175" duration="1744000" />
-      <workItem from="1559071121087" duration="9198000" />
+      <workItem from="1559071121087" duration="9335000" />
+      <workItem from="1559115108555" duration="6107000" />
     </task>
     <task id="LOCAL-00001" summary="Save chart, save enthalpy data after processes, clear chart">
       <created>1559081410433</created>
@@ -376,7 +379,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51440000" />
+    <option name="totallyTimeSpent" value="57684000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -388,9 +391,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.14966443" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.15167785" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -399,13 +403,13 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32577905" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.15439093" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.34135976" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30736545" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.34135976" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.065155804" />
       <window_info anchor="bottom" id="Problems" order="9" />
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
@@ -441,9 +445,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Controller.java</url>
-          <line>277</line>
+          <line>475</line>
           <properties />
-          <option name="timeStamp" value="26" />
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -467,23 +471,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/PngEncoderFx.java" />
+    <entry file="file://$PROJECT_DIR$/src/module-info.java" />
+    <entry file="jar://F:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3536">
+          <caret line="1772" selection-start-line="1772" selection-end-line="1772" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ProcessEditDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1360">
           <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ProcessType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#141#142#0" expanded="true" />
-            <element signature="e#185#186#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -506,66 +508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/PngEncoderFx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-          <folding>
-            <element signature="e#3784#3785#0" expanded="true" />
-            <element signature="e#3833#3834#0" expanded="true" />
-            <element signature="e#4080#4081#0" expanded="true" />
-            <element signature="e#4130#4131#0" expanded="true" />
-            <element signature="e#4466#4467#0" expanded="true" />
-            <element signature="e#4522#4523#0" expanded="true" />
-            <element signature="e#4936#4937#0" expanded="true" />
-            <element signature="e#4992#4993#0" expanded="true" />
-            <element signature="e#7459#7460#0" expanded="true" />
-            <element signature="e#7504#7505#0" expanded="true" />
-            <element signature="e#7669#7670#0" expanded="true" />
-            <element signature="e#7715#7716#0" expanded="true" />
-            <element signature="e#7858#7859#0" expanded="true" />
-            <element signature="e#7892#7893#0" expanded="true" />
-            <element signature="e#8292#8293#0" expanded="true" />
-            <element signature="e#8321#8322#0" expanded="true" />
-            <element signature="e#8694#8695#0" expanded="true" />
-            <element signature="e#8733#8734#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module-info.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-934">
-          <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
-          <caret line="1772" selection-start-line="1772" selection-end-line="1772" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="386" column="47" lean-forward="true" selection-start-line="386" selection-start-column="47" selection-end-line="386" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2936#2937#0" expanded="true" />
-            <element signature="e#2982#2983#0" expanded="true" />
-            <element signature="method#handleEditProcess#0;class#Controller#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -573,6 +515,40 @@
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ProcessType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#141#142#0" expanded="true" />
+            <element signature="e#185#186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-811">
+          <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="469" column="62" lean-forward="true" selection-start-line="469" selection-start-column="62" selection-end-line="469" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#handleEditProcess#0;class#Controller#0" />
+            <element signature="e#15948#15949#0" expanded="true" />
+            <element signature="e#15982#15983#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

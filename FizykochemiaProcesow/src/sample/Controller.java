@@ -424,44 +424,66 @@ public class Controller {
         for (int i = 0; i < main.getProcessData().size(); i++) {
             if ((temperature >= main.getProcessData().get(i).getTp() && (temperature < main.getProcessData().get(i).getTk()))) {
                 ProcessType pT = main.getProcessData().get(i).getProcessType();
+                double L = main.getProcessData().get(i).getEc();
+                double deltaT = main.getProcessData().get(i).getTk() - main.getProcessData().get(i).getTp();
+                double tempP = main.getProcessData().get(i).getTp();
                 switch (pT) {
                     case NONE:
                         return -1;
                     //efekt cieplny nałożony równomienie
                     case EVEN:
-                        return main.getProcessData().get(i).getEc() / (main.getProcessData().get(i).getTk() - main.getProcessData().get(i).getTp());
+                        return L / deltaT;
 
                     // parzyste temperatury dostają efekt cieplny, nieparzyste nie
                     case EVERY_SECOND_HAS_MORE:
-                        int temp = main.getProcessData().get(i).getTk() - main.getProcessData().get(i).getTp();
-                        System.out.println(temp);
-                        if (temp % 2 == 0) {
+
+                        System.out.println(deltaT);
+                        if (deltaT % 2 == 0) {
                             if (temperature % 2 == 0) {
-                                return main.getProcessData().get(i).getEc() / (temp / 2.0);
+                                return L / (deltaT / 2.0);
                             } else {
                                 return 0.0;
                             }
                         } else {
                             if (main.getProcessData().get(i).getTp() % 2 == 0) {
                                 if (temperature % 2 == 0) {
-                                    return main.getProcessData().get(i).getEc() / ((temp + 1) / 2.0);
+                                    return L / ((deltaT + 1) / 2.0);
                                 } else {
                                     return 0.0;
                                 }
                             } else {
                                 if (temperature % 2 == 0) {
-                                    return main.getProcessData().get(i).getEc() / ((temp - 1) / 2.0);
+                                    return L / ((deltaT - 1) / 2.0);
                                 } else {
                                     return 0.0;
                                 }
                             }
                         }
+                    case PARABOLA:
+                        double stride = 4.0/(deltaT + 1.0);
+                        double sum = 0.0;
+                        int counter = 0;
+                        for(double k = -2; k <= 2; k+=stride){
+                            sum += parabola(k);
+                            counter++;
+                        }
+                        double[] values = new double[counter];
+                        counter = 0;
+                        for(double k = -2; k <= 2; k+=stride){
+                            values[counter++] = parabola(k);
+                        }
+                        int index = (int) (temperature - tempP);
+                        return (values[index]/sum)*L;
                 }
 
             }
         }
 
         return -1;
+    }
+
+    public double parabola(double x){
+        return - (x*x) + 4;
     }
 
 

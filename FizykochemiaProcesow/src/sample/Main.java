@@ -21,7 +21,7 @@ public class Main extends Application {
 
 
     public Main() {
-        choiceBox.addAll(ProcessType.EVEN, ProcessType.EVERY_SECOND_HAS_MORE, ProcessType.NONE);
+        choiceBox.addAll(ProcessType.EVEN, ProcessType.PARABOLA, ProcessType.EVERY_SECOND_HAS_MORE, ProcessType.NONE);
 
     }
 
