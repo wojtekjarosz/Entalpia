@@ -169,6 +169,14 @@ public class Controller {
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+        }catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(main.getPrimaryStage());
+            alert.setTitle("Niewłaściwe dane wejściowe");
+            alert.setHeaderText("Niewłaściwe dane wejściowe");
+            alert.setContentText("Proszę sprawdzić poprawność danych wejściowych.");
+
+            alert.showAndWait();
         }
         answer.addAll(aSeries);
         scatterChart.setData(answer);
